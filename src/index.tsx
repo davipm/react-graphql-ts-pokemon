@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import pokemons from './services/api';
+import { ApolloProvider } from '@apollo/react-hooks';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={pokemons}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
