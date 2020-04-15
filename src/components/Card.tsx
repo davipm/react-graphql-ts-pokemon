@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import styled from "styled-components";
 import { ThemeContext } from "styled-components";
 
@@ -32,7 +32,7 @@ const Card = ({ name, number, image, maxHP, maxCP, attacks }: IPokemon) => {
   )
 }
 
-export default Card;
+export default memo(Card);
 
 const Wrapper = styled.div`
   display: flex;
@@ -85,7 +85,7 @@ const Name = styled.h2`
   margin-bottom: 1rem;
 `;
 
-const Footer = styled.div<{ type?: string }>`
+const Footer = styled.div`
   padding: 15px;
   display: flex;
   flex-wrap: wrap;

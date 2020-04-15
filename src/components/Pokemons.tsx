@@ -46,7 +46,7 @@ const GET_POKEMON = gql`
 
 function Pokemons() {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
-  const items: any = localStorage.getItem('pokemons');
+  const items: string | null = localStorage.getItem('pokemons');
   const { loading, data } = useQuery(GET_POKEMON);
 
   useEffect(() => {
