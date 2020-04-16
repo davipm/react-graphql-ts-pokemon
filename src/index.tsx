@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "aos/dist/aos.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
-import pokemons from './services/api';
-import { ApolloProvider } from '@apollo/react-hooks';
+import pokemons from "./services/api";
+import { ApolloProvider } from "@apollo/react-hooks";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,7 +13,7 @@ ReactDOM.render(
       <App />
     </ApolloProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

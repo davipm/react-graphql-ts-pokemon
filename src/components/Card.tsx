@@ -1,14 +1,14 @@
-import React, { useContext, memo } from 'react';
+import React, { useContext, memo } from "react";
 import styled from "styled-components";
 import { ThemeContext } from "styled-components";
 
-import { IPokemon } from "./Pokemons";
+import { IPokemon } from "../__types__/pokemonsTypes";
 
 const Card = ({ name, number, image, maxHP, maxCP, attacks }: IPokemon) => {
   const themeContext = useContext(ThemeContext);
 
   return (
-    <Wrapper>
+    <Wrapper data-aos="fade-up" data-aos-duration="2000" data-aos-offset="200">
       <Title>
         <div className="item">HP: {maxHP}</div>
         <div className="item">CP: {maxCP}</div>
@@ -19,7 +19,7 @@ const Card = ({ name, number, image, maxHP, maxCP, attacks }: IPokemon) => {
         <p>#{number}</p>
       </Body>
       <Footer>
-        {attacks.special.map(item => (
+        {attacks.special.map((item) => (
           <Attack
             key={item.name}
             color={`${themeContext[item.type.toLowerCase()]}`}
@@ -29,8 +29,8 @@ const Card = ({ name, number, image, maxHP, maxCP, attacks }: IPokemon) => {
         ))}
       </Footer>
     </Wrapper>
-  )
-}
+  );
+};
 
 export default memo(Card);
 
@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   border: 1px solid #ccc;
   background-color: #fff;
   background-clip: padding-box;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
 `;
 
 const Title = styled.div`
@@ -51,13 +51,13 @@ const Title = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  
+
   .item {
-    padding: .5rem 1.3rem;
+    padding: 0.5rem 1.3rem;
     color: white;
     text-align: center;
     background-color: brown;
-    border-radius: .3rem;
+    border-radius: 0.3rem;
   }
 `;
 
@@ -72,10 +72,10 @@ const Body = styled.div`
   flex: 1 1 auto;
   padding: 15px;
   text-align: center;
-  
+
   p {
     font-size: 1.3rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -94,11 +94,11 @@ const Footer = styled.div`
 `;
 
 const Attack = styled.div<{ color: string }>`
-  margin-right: .5rem;
-  padding: .5rem 1.3rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem 1.3rem;
   margin-top: 1rem;
   color: black;
   text-align: center;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   background-color: ${({ color }) => color};
 `;

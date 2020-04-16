@@ -1,64 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { gql } from 'apollo-boost';
 import styled, { ThemeProvider } from "styled-components";
-import theme from "../styles/theme";
+import LazyLoad from "react-lazyload";
 
+import { GET_POKEMONS } from "../graphql/pokemons";
+import { IPokemon } from "../__types__/pokemonsTypes";
+import theme from "../styles/theme";
 import Card from "./Card";
 
-interface ISpecialName {
-  name: string;
-  type: string
-}
-
-interface ISpecial {
-  special: ISpecialName[]
-}
-
-export interface IPokemon {
-  id: string;
-  name: string;
-  number: string
-  image: string
-  maxHP: number
-  maxCP: number
-  attacks: ISpecial
-}
-
-const GET_POKEMON = gql`
-  {
-    pokemons(first: -1) {
-      name
-      id
-      number
-      image
-      maxHP
-      maxCP
-      attacks {
-        special {
-          name
-          type
-        }
-      }
-    }
-  }
-`;
-
 function Pokemons() {
-  const [pokemons, setPokemons] = useState<IPokemon[]>([]);
-  const items: string | null = localStorage.getItem('pokemons');
-  const { loading, data } = useQuery(GET_POKEMON);
+  const { loading, data } = useQuery(GET_POKEMONS, {
+    variables: { first: -1 },
+  });
+
+  const [pokemons] = useState<IPokemon[]>(() => {
+    const testApp = localStorage.getItem("pokemons");
+    return JSON.parse(testApp!);
+  });
 
   useEffect(() => {
     if (data && data.pokemons) {
-      localStorage.setItem('pokemons', JSON.stringify(data.pokemons));
+      localStorage.setItem("pokemons", JSON.stringify(data.pokemons));
     }
-
-    if (items) {
-      setPokemons(JSON.parse(items));
-    }
-  }, [items, data]);
-
+  }, [data]);
 
   return (
     <Section>
@@ -66,16 +30,20 @@ function Pokemons() {
 
       <ThemeProvider theme={theme}>
         <Grid>
-          {(loading && !items) && <h3>Loading</h3>}
-          {pokemons.length > 0 ? (
-            pokemons.map((item: IPokemon) => (
-              <Card key={item.id} {...item} />
-            ))
-          ): data && data.pokemons ? (
-            data.pokemons.map((item: IPokemon) => (
-              <Card key={item.id} {...item} />
-            ))
-          ) : null}
+          {loading && !pokemons && <h3>Loading</h3>}
+          {pokemons
+            ? pokemons.map((item: IPokemon) => (
+                <LazyLoad key={item.id} throttle={200} offset={10}>
+                  <Card {...item} />
+                </LazyLoad>
+              ))
+            : data && data.pokemons
+            ? data.pokemons.map((item: IPokemon) => (
+                <LazyLoad key={item.id} throttle={200} offset={10}>
+                  <Card {...item} />
+                </LazyLoad>
+              ))
+            : null}
         </Grid>
       </ThemeProvider>
     </Section>
@@ -90,7 +58,7 @@ const Section = styled.section`
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px;
- 
+
   @media (min-width: 1200px) {
     max-width: 1140px;
   }
