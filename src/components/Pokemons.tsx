@@ -69,4 +69,12 @@ const Grid = styled.section`
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin: 2rem auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
 `;
