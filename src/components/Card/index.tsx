@@ -2,27 +2,32 @@ import React, { useContext, memo } from "react";
 import { ThemeContext } from "styled-components";
 
 import { IPokemon } from "../../__types__/pokemonsTypes";
-import { Wrapper, Name, Image, Title, Attack, Body, Footer } from "./style";
+import { Wrapper, Attack, Body, Footer } from "./styles";
 
 const Card = ({ name, number, image, maxHP, maxCP, attacks }: IPokemon) => {
-  const themeContext = useContext(ThemeContext);
+  const color = useContext(ThemeContext);
 
   return (
     <Wrapper data-aos="fade-up" data-aos-duration="2000" data-aos-offset="200">
-      <Title>
-        <div className="item">HP: {maxHP}</div>
-        <div className="item">CP: {maxCP}</div>
-      </Title>
-      <Image src={image} alt={name} />
+      <header>
+        <div>HP: {maxHP}</div>
+        <div>CP: {maxCP}</div>
+      </header>
+
+      <img src={image} alt={name} title={name} />
+
       <Body>
-        <Name>{name}</Name>
+        <h2>{name}</h2>
         <p>#{number}</p>
       </Body>
+
       <Footer>
         {attacks.special.map((item) => (
           <Attack
             key={item.name}
-            color={`${themeContext[item.type.toLowerCase()]}`}
+            style={{
+              backgroundColor: `${color[item.type.toLowerCase()]}`,
+            }}
           >
             {item.name}
           </Attack>

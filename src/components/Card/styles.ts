@@ -10,28 +10,26 @@ export const Wrapper = styled.div`
   background-color: #fff;
   background-clip: padding-box;
   border-radius: 0.3rem;
-`;
 
-export const Title = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
 
-  .item {
-    padding: 0.5rem 1.3rem;
-    color: white;
-    text-align: center;
-    background-color: brown;
-    border-radius: 0.3rem;
+    div {
+      padding: 0.5rem 1.3rem;
+      color: white;
+      text-align: center;
+      background-color: brown;
+      border-radius: 0.3rem;
+    }
   }
-`;
 
-export const Image = styled.img`
-  display: block;
-  width: 60%;
-  height: auto;
-  margin: auto;
+  img {
+    align-self: center;
+    width: 60%;
+  }
 `;
 
 export const Body = styled.div`
@@ -39,19 +37,19 @@ export const Body = styled.div`
   padding: 15px;
   text-align: center;
 
+  h2 {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
   p {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
   }
 `;
 
-export const Name = styled.h2`
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 1rem;
-`;
-
-export const Footer = styled.div`
+export const Footer = styled.footer`
   padding: 15px;
   display: flex;
   flex-wrap: wrap;
@@ -59,12 +57,11 @@ export const Footer = styled.div`
   justify-content: space-around;
 `;
 
-export const Attack = styled.div<{ color: string }>`
+export const Attack = styled.div`
   margin-right: 0.5rem;
   padding: 0.5rem 1.3rem;
   margin-top: 1rem;
   color: black;
   text-align: center;
   border-radius: 0.3rem;
-  background-color: ${({ color }) => color};
 `;
