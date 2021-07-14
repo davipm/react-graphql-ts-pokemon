@@ -1,18 +1,18 @@
 import { useState } from "react";
 
-export function useLocalStorage<T>(key: string, initialValue: T) {
+export function useLocalStorage<T>(key: string, initialState: T) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
       // Get from local storage by key
       const item = window.localStorage.getItem(key);
-      // Parse stored json or if none return initialValue
-      return item ? JSON.parse(item) : initialValue;
+      // Parse stored json or if none return initialState
+      return item ? JSON.parse(item) : initialState;
     } catch (error) {
-      // If error also return initialValue
+      // If error also return initialState
       console.log(error);
-      return initialValue;
+      return initialState;
     }
   });
   // Return a wrapped version of useState's setter function that ...
