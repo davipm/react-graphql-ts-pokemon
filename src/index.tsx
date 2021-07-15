@@ -1,11 +1,12 @@
+import "aos/dist/aos.css";
+
+import { ApolloProvider } from "@apollo/react-hooks";
 import React from "react";
 import ReactDOM from "react-dom";
-import "aos/dist/aos.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
 
+import App from "./App";
 import pokemons from "./services/api";
-import { ApolloProvider } from "@apollo/react-hooks";
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>

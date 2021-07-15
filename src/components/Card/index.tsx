@@ -1,8 +1,8 @@
-import React, { useContext, memo } from "react";
+import React, { memo, useContext } from "react";
 import { ThemeContext } from "styled-components";
 
 import { IPokemon } from "../../__types__/pokemonsTypes";
-import { Wrapper, Attack, Body, Footer } from "./styles";
+import { Attack, Body, Footer, Wrapper } from "./styles";
 
 const Card = ({ name, number, image, maxHP, maxCP, attacks }: IPokemon) => {
   const color = useContext(ThemeContext);

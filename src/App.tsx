@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
 import AOS from "aos";
+import React, { useEffect } from "react";
 
-import Global from "./styles/global";
 import Pokemons from "./components/Pokemons";
+import Global from "./styles/global";
 
 function App() {
   useEffect(() => {
