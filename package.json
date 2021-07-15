@@ -31,7 +31,15 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "plugins": ["simple-import-sort"],
+    "rules": {
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+      "import/first": "error",
+      "import/newline-after-import": "error",
+      "import/no-duplicates": "error"
+    }
   },
   "browserslist": {
     "production": [
@@ -46,6 +54,8 @@
     ]
   },
   "devDependencies": {
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.0.4"
   }
 }

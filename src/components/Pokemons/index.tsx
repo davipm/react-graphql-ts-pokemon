@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { ThemeProvider } from "styled-components";
+import React, { useEffect } from "react";
 import LazyLoad from "react-lazyload";
+import { ThemeProvider } from "styled-components";
 
-import { useLocalStorage } from "../../hooks";
-import { GET_POKEMONS } from "../../graphql/pokemons";
 import { IPokemon } from "../../__types__/pokemonsTypes";
+import { GET_POKEMONS } from "../../graphql/pokemons";
+import { useLocalStorage } from "../../hooks";
 import theme from "../../styles/theme";
 import Card from "../Card";
-
-import { Section, Grid } from "./styles";
+import { Grid, Section } from "./styles";
 
 function Pokemons() {
   const [pokemons, setPokemons] = useLocalStorage<IPokemon[]>("pokemons", []);
