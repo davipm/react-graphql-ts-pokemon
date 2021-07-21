@@ -11,14 +11,14 @@ import Card from "../Card";
 import { Grid, Section } from "./styles";
 
 function Pokemons() {
-  const [pokemons, setPokemons] = useLocalStorage<IPokemon[]>("pokemons", []);
+  const [pokemon, setPokemon] = useLocalStorage<IPokemon[]>("pokemons", []);
 
   const { loading, data, error } = useQuery(GET_POKEMONS, {
     variables: { first: -1 },
   });
 
   useEffect(() => {
-    if (data) setPokemons(data.pokemons);
+    if (data) setPokemon(data.pokemons);
     // eslint-disable-next-line
   }, [data]);
 
@@ -28,10 +28,10 @@ function Pokemons() {
 
       <ThemeProvider theme={theme}>
         <Grid>
-          {loading && !pokemons?.length && <h3>Loading</h3>}
-          {error && !pokemons?.length && <h3>Error!</h3>}
+          {loading && !pokemon?.length && <h3>Loading</h3>}
+          {error && !pokemon?.length && <h3>Error!</h3>}
 
-          {pokemons.map((item) => (
+          {pokemon.map((item) => (
             <LazyLoad key={item.id} throttle={200} offset={10}>
               <Card {...item} />
             </LazyLoad>
