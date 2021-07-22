@@ -10,10 +10,14 @@ import theme from "../../styles/theme";
 import Card from "../Card";
 import { Grid, Section } from "./styles";
 
+interface PokemonData {
+  pokemons: IPokemon[];
+}
+
 function Pokemons() {
   const [pokemon, setPokemon] = useLocalStorage<IPokemon[]>("pokemons", []);
 
-  const { loading, data, error } = useQuery(GET_POKEMONS, {
+  const { loading, data, error } = useQuery<PokemonData>(GET_POKEMONS, {
     variables: { first: -1 },
   });
 
