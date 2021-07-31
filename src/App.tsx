@@ -1,10 +1,11 @@
 import AOS from "aos";
 import React, { useEffect } from "react";
 
-import Pokemons from "./components/Pokemons";
+import Pokemons from "@/components/Pokemons";
+
 import Global from "./styles/global";
 
-function App() {
+export default function App() {
   useEffect(() => {
     AOS.init({ once: true });
   }, []);
@@ -16,5 +17,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

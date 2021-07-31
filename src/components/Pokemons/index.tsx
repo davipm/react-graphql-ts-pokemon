@@ -3,18 +3,19 @@ import React, { useEffect } from "react";
 import LazyLoad from "react-lazyload";
 import { ThemeProvider } from "styled-components";
 
-import { IPokemon } from "../../__types__/pokemonsTypes";
-import { GET_POKEMONS } from "../../graphql/pokemons";
-import { useLocalStorage } from "../../hooks";
+import { IPokemon } from "@/__types__/pokemonsTypes";
+import Card from "@/components/Card";
+import { GET_POKEMONS } from "@/graphql/pokemons";
+import { useLocalStorage } from "@/hooks";
+
 import theme from "../../styles/theme";
-import Card from "../Card";
 import { Grid, Section } from "./styles";
 
 interface PokemonData {
   pokemons: IPokemon[];
 }
 
-function Pokemons() {
+export default function Pokemons() {
   const [pokemon, setPokemon] = useLocalStorage<IPokemon[]>("pokemons", []);
 
   const { loading, data, error } = useQuery<PokemonData>(GET_POKEMONS, {
@@ -45,5 +46,3 @@ function Pokemons() {
     </Section>
   );
 }
-
-export default Pokemons;
