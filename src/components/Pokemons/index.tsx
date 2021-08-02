@@ -3,10 +3,10 @@ import React, { useEffect } from "react";
 import LazyLoad from "react-lazyload";
 import { ThemeProvider } from "styled-components";
 
-import { IPokemon } from "@/types/pokemonsTypes";
 import Card from "@/components/Card";
 import { GET_POKEMONS } from "@/graphql/pokemons";
 import { useLocalStorage } from "@/hooks";
+import { IPokemon } from "@/types/pokemonsTypes";
 
 import theme from "../../styles/theme";
 import { Grid, Section } from "./styles";
