@@ -1,7 +1,7 @@
 import React, { memo, useContext } from "react";
 import { ThemeContext } from "styled-components";
 
-import { IPokemon } from "@/__types__/pokemonsTypes";
+import { IPokemon } from "@/types/pokemonsTypes";
 
 import { Attack, Body, Footer, Wrapper } from "./styles";
 
