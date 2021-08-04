@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import Card from "@/components/Card";
 import { GET_POKEMONS } from "@/graphql/pokemons";
 import { useLocalStorage } from "@/hooks";
-import { IPokemon } from "@/types/pokemonsTypes";
+import { IPokemon } from "@/types/pokemon";
 
 import theme from "../../styles/theme";
 import { Grid, Section } from "./styles";
