@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import LazyLoad from "react-lazyload";
 import { ThemeProvider } from "styled-components";
 
-import Card from "@/components/Card";
+import Card from "@/components/PokemonCard";
 import { GET_POKEMONS } from "@/graphql/pokemons";
 import { useLocalStorage } from "@/hooks";
 import { IPokemon } from "@/types/pokemon";
@@ -15,7 +15,7 @@ interface PokemonData {
   pokemons: IPokemon[];
 }
 
-export default function Pokemons() {
+export default function PokemonList() {
   const [pokemon, setPokemon] = useLocalStorage<IPokemon[]>("pokemons", []);
 
   const { loading, data, error } = useQuery<PokemonData>(GET_POKEMONS, {

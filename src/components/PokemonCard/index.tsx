@@ -5,7 +5,14 @@ import { IPokemon } from "@/types/pokemon";
 
 import { Attack, Body, Footer, Wrapper } from "./styles";
 
-const Card = ({ name, number, image, maxHP, maxCP, attacks }: IPokemon) => {
+const PokemonCard = ({
+  name,
+  number,
+  image,
+  maxHP,
+  maxCP,
+  attacks,
+}: IPokemon) => {
   const color = useContext(ThemeContext);
 
   return (
@@ -38,4 +45,4 @@ const Card = ({ name, number, image, maxHP, maxCP, attacks }: IPokemon) => {
   );
 };
 
-export default memo(Card);
+export default memo(PokemonCard);

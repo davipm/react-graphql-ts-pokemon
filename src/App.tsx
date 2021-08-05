@@ -1,7 +1,7 @@
 import AOS from "aos";
 import React, { useEffect } from "react";
 
-import Pokemons from "@/components/Pokemons";
+import PokemonList from "@/components/PokemonList";
 
 import Global from "./styles/global";
 
@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <div id="app">
-      <Pokemons />
+      <PokemonList />
       <Global />
     </div>
   );
