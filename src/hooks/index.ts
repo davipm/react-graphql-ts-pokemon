@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ThemeContext } from "styled-components";
 
 export function useLocalStorage<T>(key: string, initialState: T) {
   // State to store our value
@@ -33,4 +34,8 @@ export function useLocalStorage<T>(key: string, initialState: T) {
   };
 
   return [storedValue, setValue] as const;
+}
+
+export function useThemeContext() {
+  return useContext(ThemeContext);
 }

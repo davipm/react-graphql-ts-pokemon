@@ -1,6 +1,6 @@
-import React, { memo, useContext } from "react";
-import { ThemeContext } from "styled-components";
+import React, { memo } from "react";
 
+import { useThemeContext } from "@/hooks";
 import { IPokemon } from "@/types/pokemon";
 
 import { Attack, Body, Footer, Wrapper } from "./styles";
@@ -13,7 +13,7 @@ const PokemonCard = ({
   maxCP,
   attacks,
 }: IPokemon) => {
-  const color = useContext(ThemeContext);
+  const color = useThemeContext();
 
   return (
     <Wrapper data-aos="fade-up" data-aos-duration="2000" data-aos-offset="200">
