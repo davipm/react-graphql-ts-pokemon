@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   position: relative;
   flex-direction: column;
   min-width: 0;
+  height: 100%;
   text-align: left;
   border: 1px solid #ccc;
   background-color: #fff;
