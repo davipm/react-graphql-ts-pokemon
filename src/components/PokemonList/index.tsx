@@ -6,14 +6,10 @@ import { ThemeProvider } from "styled-components";
 import Card from "@/components/PokemonCard";
 import { GET_POKEMONS } from "@/graphql/pokemons";
 import { useLocalStorage } from "@/hooks";
-import { IPokemon } from "@/types/pokemon";
+import { IPokemon, PokemonData } from "@/types/pokemon";
 
 import theme from "../../styles/theme";
 import { Grid, Section } from "./styles";
-
-interface PokemonData {
-  pokemons: IPokemon[];
-}
 
 export default function PokemonList() {
   const [pokemon, setPokemon] = useLocalStorage<IPokemon[]>("pokemons", []);
@@ -29,7 +25,7 @@ export default function PokemonList() {
 
   return (
     <Section>
-      <h1>Pokemons</h1>
+      <h1>Pokemon's</h1>
 
       <ThemeProvider theme={theme}>
         <Grid>

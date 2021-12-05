@@ -1,3 +1,12 @@
+interface SpecialType {
+  name: string;
+  type: string;
+}
+
+interface Special {
+  special: SpecialType[];
+}
+
 export interface IPokemon {
   id: string;
   name: string;
@@ -5,10 +14,9 @@ export interface IPokemon {
   image: string;
   maxHP: number;
   maxCP: number;
-  attacks: {
-    special: {
-      name: string;
-      type: string;
-    }[];
-  };
+  attacks: Special;
+}
+
+export interface PokemonData {
+  pokemons: IPokemon[];
 }
